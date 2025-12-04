@@ -1,23 +1,6 @@
 <?php
-    $user='root';
-    $password='stephenpan04';
-    $database='bank';
-    $servername='localhost:3310';
-
-    $mysqli =  new mysqli($servername, $user, $password, $database);
-    if($mysqli->connect_error){
-        die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-    }
-    else{
-        echo "Connected successfully.";
-    }
-?>
-<?php
-// Start session and prevent caching
-session_start();
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
-header("Pragma: no-cache"); // HTTP 1.0
-header("Expires: 0"); // Proxies
+// Use the shared configuration (Fixes the database connection)
+require_once __DIR__ . '/config.php';
 
 // Determine logged-in user and display name
 $loggedInUser = null;
@@ -47,7 +30,6 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
 
     <header class="header">
         <div class="header-left">
-            <!-- Logo image for the header -->
             <a href="index.php">
                 <img src="images/themouse.png" alt="The Mouse Logo" class="logo-img">
             </a>
@@ -55,6 +37,12 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
         </div>
         <div class="header-right">
             <?php if ($loggedInUser !== null): ?>
+                
+                <?php if (isset($loggedInUser['role']) && strtolower($loggedInUser['role']) === 'staff'): ?>
+                    <a href="employeeDashboard.php" class="account-icon" title="Staff Dashboard" style="color: #FFD700; margin-right: 15px;">
+                        <i class="fas fa-tools"></i>
+                    </a>
+                <?php endif; ?>
                 <span class="account-info">Welcome, <?php echo htmlspecialchars($userName); ?></span>
                 <a href="profile.php" class="account-icon" title="Edit Profile">
                     <i class="fas fa-user-circle"></i>
@@ -70,7 +58,6 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
     </header>
 
     <section class="hero-section">
-        <!-- Larger logo image for the hero section -->
         <img src="images/themouse.png" alt="The Mouse Logo" class="hero-logo-large">
         <h1 class="hero-title">Your Ultimate Movie Experience</h1>
     </section>
@@ -85,7 +72,7 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
         <div class="movie-grid">
             <a class='movieclick' href="avengers.php">
             <div class="movie-card">
-                <img src="images/movie1.jpg" alt="Shadow Strike">
+                <img src="images/movie1.jpg" alt="Avengers: Endgame">
                 <div class="movie-info">
                     <div class="title">Avengers: Endgame</div>
                     <div class="details">
@@ -98,7 +85,7 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
 
             <a class='movieclick' href="beautifulboy.php">
             <div class="movie-card">
-                <img src="images/movie2.jpg" alt="Dark Secrets">
+                <img src="images/movie2.jpg" alt="Beautiful Boy">
                 <div class="movie-info">
                     <div class="title">Beautiful Boy</div>
                     <div class="details">
@@ -111,7 +98,7 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
 
             <a class='movieclick' href="wicked.php">
             <div class="movie-card">
-                <img src="images/movie3.jpg" alt="Beyond the Horizon">
+                <img src="images/movie3.jpg" alt="Wicked">
                 <div class="movie-info">
                     <div class="title">Wicked</div>
                     <div class="details">
@@ -124,7 +111,7 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
 
             <a class='movieclick' href="lalaland.php">
             <div class="movie-card">
-                <img src="images/movie4.jpg" alt="Cosmic Voyage">
+                <img src="images/movie4.jpg" alt="La La Land">
                 <div class="movie-info">
                     <div class="title">La La Land</div>
                     <div class="details">
@@ -139,13 +126,12 @@ $appHeader = isset($GLOBALS['header']) ? $GLOBALS['header'] : '';
 
     <footer class="footer">
         <?php
-        // Prefer a PHP footer if present, fallback to HTML file or a small default footer
         if (file_exists(__DIR__ . '/footer.php')) {
             include __DIR__ . '/footer.php';
         } elseif (file_exists(__DIR__ . '/footer.html')) {
             include __DIR__ . '/footer.html';
         } else {
-            echo '<div class="footer-inner">© ' . date('Y') . ' The Mouse</div>';
+            echo '<div class="footer-inner">© ' . date('Y') . ' The Mouse Cinema</div>';
         }
         ?>
     </footer>

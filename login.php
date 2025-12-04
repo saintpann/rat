@@ -27,8 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'name' => $user['USR_FNAME'],
                     'role' => $user['USR_ROLE']
                 ];
-                header("Location: index.php");
+
+                // --- NEW REDIRECT LOGIC ---
+                if (isset($user['USR_ROLE']) && strtolower($user['USR_ROLE']) === 'staff') {
+                    header("Location: employeeDashboard.php");
+                } else {
+                    header("Location: index.php");
+                }
                 exit;
+                // --------------------------
+
             } else {
                 $errorMessage = 'Invalid email or password.';
             }
@@ -63,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-input" required>
+                <input type="text" id="email" name="email" class="form-input" required>
             </div>
 
             <div class="form-group">

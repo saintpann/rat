@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-// Check if user is logged in and is staff
+// 1. Check if user is logged in
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit;
@@ -10,8 +10,11 @@ if (!isset($_SESSION['user'])) {
 $user = $_SESSION['user'];
 $userRole = $user['role'] ?? '';
 
-// Only allow Staff role on employee dashboard
-if (strtolower($userRole) !== 'staff') {
+// 2. Check if user is Staff
+// We use trim() to remove accidental spaces and strtolower() for case-insensitive check
+if (strtolower(trim($userRole)) !== 'staff') {
+    // If this triggers, the system thinks you are NOT staff.
+    // Redirect to index.
     header("Location: index.php");
     exit;
 }
@@ -134,7 +137,6 @@ $userName = $user['name'] ?? 'Staff Member';
         </div>
 
         <div class="staff-grid">
-            <!-- Users Management -->
             <div class="staff-card">
                 <i class="fas fa-users"></i>
                 <h3>Manage Users</h3>
@@ -142,7 +144,6 @@ $userName = $user['name'] ?? 'Staff Member';
                 <a href="staff_users.php" class="staff-btn">Open</a>
             </div>
 
-            <!-- Bookings Management -->
             <div class="staff-card">
                 <i class="fas fa-calendar-check"></i>
                 <h3>Manage Bookings</h3>
@@ -150,7 +151,6 @@ $userName = $user['name'] ?? 'Staff Member';
                 <a href="staff_bookings.php" class="staff-btn">Open</a>
             </div>
 
-            <!-- Tickets Management -->
             <div class="staff-card">
                 <i class="fas fa-ticket-alt"></i>
                 <h3>Manage Tickets</h3>
