@@ -192,7 +192,7 @@ $userName = $user['name'] ?? 'Customer';
                             <!-- Add a gap (aisle) in the middle -->
                             <?php if ($i == 5) { ?><div class="aisle"></div><?php } ?>
 
-                            <input type="checkbox" name="seat" value="<?php echo $seatID; ?>" id="<?php echo $seatID; ?>" <?php echo $disabledAttr; ?>>
+                            <input type="checkbox" name="seat[]" value="<?php echo $seatID; ?>" id="<?php echo $seatID; ?>" <?php echo $disabledAttr; ?>>
                             <label for="<?php echo $seatID; ?>" class="seat <?php echo $statusClass; ?>"></label>
                         <?php } ?>
                     </div>
