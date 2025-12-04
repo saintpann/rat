@@ -1,0 +1,131 @@
+/* Updated color palette based on the "The Mouse" logo */
+:root {
+    --primary-blue: #234E70;      /* Dark blue from logo */
+    --secondary-blue: #4A6E8A;    /* Lighter blue for accents */
+    --cream: #EDE6D6;             /* Creamy background/text from logo */
+    --gold: #FFD700;              /* Bright gold for stars/accents */
+    --dark-grey: #333333;         /* Dark grey for text/elements */
+    --light-grey: #A9A9A9;        /* Lighter grey for secondary text */
+    --bg-dark: #121212;           /* Very dark background for depth */
+    --card-bg: #282828;           /* Slightly lighter card background */
+    --border-color: #383838;      /* Subtle border color */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cream);
+    line-height: 1.6;
+    
+    /* Login-specific body styles */
+    background-color: var(--primary-blue); /* Login page has blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--gold); /* Links in gold */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================================
+   *** STYLES FOR LOGIN PAGE ***
+===============================================
+*/
+
+.login-container {
+    background-color: var(--bg-dark);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-img-login {
+    height: 60px; /* A bit larger for the login form */
+    width: auto;
+}
+
+.login-form h2 {
+    color: var(--cream);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--light-grey);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--cream);
+    font-size: 16px;
+}
+
+.form-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--gold);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.form-button:hover {
+    background-color: #e5c100;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--light-grey);
+}
+
+.signup-link a {
+    font-weight: 600;
+}
+
+/* Responsive adjustments for login page */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+    
+    .login-form h2 {
+        font-size: 24px;
+    }
+}

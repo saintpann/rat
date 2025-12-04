@@ -1,0 +1,106 @@
+/* Inherit main variables */
+:root {
+    --primary-blue: #234E70;      
+    --secondary-blue: #4A6E8A;    
+    --cream: #EDE6D6;             
+    --gold: #FFD700;              
+    --dark-grey: #333333;         
+    --light-grey: #A9A9A9;        
+    --bg-dark: #121212;           
+    --card-bg: #282828;           
+    --border-color: #383838;      
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-blue);
+    color: var(--cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.edit-container {
+    background-color: var(--bg-dark);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 600px;
+}
+
+.edit-header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.logo-img { height: 50px; width: auto; margin-bottom: 10px; }
+
+.form-group { margin-bottom: 15px; }
+
+.form-row { display: flex; gap: 15px; }
+.form-row .form-group { flex: 1; }
+.form-row .small-field { flex: 0 0 100px; }
+
+label {
+    display: block;
+    color: var(--light-grey);
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--cream);
+    font-size: 16px;
+}
+
+/* Style for the read-only username */
+.form-input.readonly {
+    background-color: #1f1f1f;
+    color: #666;
+    cursor: not-allowed;
+    border: 1px solid #333;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.save-btn {
+    flex: 2;
+    padding: 12px;
+    background-color: var(--gold);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.save-btn:hover { background-color: #e5c100; }
+
+.cancel-btn {
+    flex: 1;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--light-grey);
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.cancel-btn:hover { background-color: var(--card-bg); color: var(--cream); }

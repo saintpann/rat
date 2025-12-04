@@ -1,0 +1,315 @@
+/* Updated color palette based on the "The Mouse" logo */
+:root {
+    --primary-blue: #234E70;      /* Dark blue from logo */
+    --secondary-blue: #4A6E8A;    /* Lighter blue for accents */
+    --cream: #EDE6D6;             /* Creamy background/text from logo */
+    --gold: #FFD700;              /* Bright gold for stars/accents */
+    --dark-grey: #333333;         /* Dark grey for text/elements */
+    --light-grey: #A9A9A9;        /* Lighter grey for secondary text */
+    --bg-dark: #121212;           /* Very dark background for depth */
+    --card-bg: #282828;           /* Slightly lighter card background */
+    --border-color: #383838;      /* Subtle border color */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--cream);
+    line-height: 1.6;
+    padding-top: 68px; /* Adjusted for fixed header */
+}
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================================
+   *** HEADER ***
+===============================================
+*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--primary-blue);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header-left .logo-img {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right .account-info {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 15px;
+    color: var(--cream);
+}
+
+.header-right .login-btn {
+    background-color: var(--gold);
+    color: var(--primary-blue);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.header-right .login-btn:hover {
+    background-color: #e5c100;
+    text-decoration: none;
+}
+
+.header-right .account-icon {
+    font-size: 24px;
+    color: var(--cream);
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* ===============================================
+   *** HERO SECTION ***
+===============================================
+*/
+.hero-section {
+    background-color: var(--bg-dark);
+    text-align: center;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section .hero-logo-large {
+    width: 250px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.hero-section .hero-title {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 50px;
+}
+
+/* ===============================================
+   *** MOVIE LISTINGS (GRID) ***
+===============================================
+*/
+.movie-listings {
+    /* Reduced side padding to 10px so cards go closer to the edge */
+    padding: 40px 10px;
+}
+
+.listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px; /* Keep header text aligned nicely */
+    flex-wrap: wrap;
+}
+
+.listing-tabs {
+    display: flex;
+    gap: 20px;
+}
+
+.listing-tabs button {
+    background: none;
+    border: none;
+    color: var(--light-grey);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.listing-tabs button.active {
+    color: var(--cream);
+}
+
+.listing-tabs button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--gold);
+}
+
+.view-all {
+    color: var(--gold);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-all i {
+    font-size: 14px;
+}
+
+/* --- THE GRID MAGIC --- */
+.movie-grid {
+    display: grid;
+    
+    /* 1. auto-fit: Stretches cards to fill the row (no empty space on right).
+       2. minmax(350px, 1fr): Cards are at least 350px wide, but grow if needed.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    
+    gap: 20px;
+    width: 100%;
+}
+
+.movie-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card img {
+    width: 100%;
+    /* Taller height for bigger cards */
+    height: 525px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-info .title {
+    font-size: 20px; /* Slightly larger text */
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--cream);
+}
+
+.movie-info .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: var(--light-grey);
+}
+
+.movie-info .genre {
+    color: var(--secondary-blue);
+    font-weight: 500;
+}
+
+.movie-info .rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.movie-info .rating i {
+    color: var(--gold);
+}
+
+/* ===============================================
+   *** FOOTER & BUTTONS ***
+===============================================
+*/
+.footer {
+    background-color: var(--primary-blue);
+    padding: 20px 30px;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+}
+
+.shopping-cart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--gold);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+.shopping-cart-btn:hover {
+    background-color: #e5c100;
+}
+
+/* ===============================================
+   *** RESPONSIVE ***
+===============================================
+*/
+@media (max-width: 768px) {
+    body { padding-top: 57px; }
+
+    .header { padding: 10px 15px; }
+    .header-left .logo-img { height: 35px; }
+    .header-right .login-btn { padding: 6px 15px; font-size: 14px; }
+    
+    .hero-section { padding: 60px 15px; }
+    .hero-section .hero-title { font-size: 40px; }
+    .hero-section .hero-logo-large { width: 200px; }
+    
+    .movie-listings { padding: 20px 15px; }
+    .listing-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    
+    /* Make cards smaller on tablets so they fit side-by-side */
+    .movie-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .movie-card img { height: 270px; }
+    
+    .shopping-cart-btn { width: 50px; height: 50px; font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+    .header-right .account-info { display: none; }
+    .header-right .account-icon { margin-left: 0; }
+    
+    .hero-section .hero-title { font-size: 30px; }
+    
+    /* Single column on phones */
+    .movie-grid { grid-template-columns: 1fr; }
+}

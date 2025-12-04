@@ -1,0 +1,158 @@
+/* Color Palette */
+:root {
+    --primary-blue: #234E70;      
+    --secondary-blue: #4A6E8A;    
+    --cream: #EDE6D6;             
+    --gold: #FFD700;              
+    --dark-grey: #333333;         
+    --light-grey: #A9A9A9;        
+    --bg-dark: #121212;           
+    --card-bg: #282828;           
+    --border-color: #383838;      
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cream);
+    line-height: 1.6;
+    background-color: var(--primary-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0; /* Add padding so it doesn't touch edges on small screens */
+}
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================================
+   *** SIGNUP CONTAINER ***
+===============================================
+*/
+
+.login-container {
+    background-color: var(--bg-dark);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    /* WIDER than login page to fit more fields */
+    max-width: 550px; 
+    margin: 20px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-img-login {
+    height: 60px;
+    width: auto;
+}
+
+.login-form h2 {
+    color: var(--cream);
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* ===============================================
+   *** FORM GROUPS & INPUTS ***
+===============================================
+*/
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Specific style for the side-by-side fields (Name & Age) */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+/* Make the first item in the row grow to fill space */
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    color: var(--light-grey);
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--cream);
+    font-size: 16px;
+}
+
+/* Dropdown specific style */
+select.form-input {
+    appearance: none; /* Removes default arrow on some browsers */
+    cursor: pointer;
+}
+
+.form-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--gold);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.form-button:hover {
+    background-color: #e5c100;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--light-grey);
+    font-size: 14px;
+}
+
+.signup-link a {
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+    
+    /* Stack the name and age fields on very small screens */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
