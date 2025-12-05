@@ -50,3 +50,5 @@
 2025-12-04T15:55:38+01:00 - Movie param: 'Avengers: Endgame' -> resolved to: 'Avengers: Endgame' | Date: '2025-12-04' | Time input: '10:00AM' | Time24: '10:00:00'
 2025-12-04T16:18:46+01:00 - SEATS RECEIVED: ["A1","A3"]
 2025-12-04T16:18:48+01:00 - Movie param: 'Avengers: Endgame' -> resolved to: 'Avengers: Endgame' | Date: '2025-12-04' | Time input: '10:00AM' | Time24: '10:00:00'
+2025-12-05T09:48:44+01:00 - SEATS RECEIVED: ["B2","E4"]
+2025-12-05T09:48:54+01:00 - Movie param: 'Avengers: Endgame' -> resolved to: 'Avengers: Endgame' | Date: '2025-12-05' | Time input: '10:00AM' | Time24: '10:00:00'
